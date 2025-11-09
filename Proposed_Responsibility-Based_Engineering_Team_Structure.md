@@ -1,111 +1,304 @@
 # Proposed Responsibility-Based Engineering Team Structure (Method 2026 Strategy)
 
+## Document Brief
+
+This document outlines a comprehensive strategy for reorganizing Method's engineering teams around customer-facing responsibilities to achieve our 2026 strategic vision of delivering tailored experiences for SMB users.
+
+### Key Sections
+
+**Strategic Overview:**
+- [Motivations](#1-motivations) - Why transformation is essential for Method's future:
+  - [The Cost of Organizational Misalignment](#the-cost-of-organizational-misalignment) - How current structure creates delivery bottlenecks
+  - [The SMB Market Opportunity](#the-smb-market-opportunity) - Untapped potential in small business software
+  - [The AI-Powered Software Revolution](#the-ai-powered-software-revolution) - Industry disruption and competitive positioning
+  - [Strategic Vision: Method as the SMB Operating System](#strategic-vision-method-as-the-smb-operating-system) - Our ambitious 2026 goal
+  - [The Transformation Imperative](#the-transformation-imperative) - Why the cost of inaction exceeds the effort to change
+- [Problem Statements](#2-problem-statements) - Detailed analysis of current challenges:
+  - [Internal Team Friction](#internal-team-friction) - Dependency entanglement and low team autonomy
+  - [Product Gaps for SMB Customers](#product-gaps-for-smb-customers) - User engagement and customization challenges
+
+**Proposed Solution:**
+- [Team Structure Overview](#3-proposed-responsibility-based-team-structure) - High-level approach and principles
+- [Proposed Teams](#teams-and-responsibilities):
+  - [Insights Team](#insights-team) - Data synthesis and intelligence for company and customers
+  - [Action Automation Team](#action-automation-team) - Workflow automation and no-code platform reliability
+  - [User Experience Team](#user-experience-team) - In-platform navigation and customer education
+  - [Internal Tools Team](#internal-tools-team) - Reducing internal bottlenecks for faster delivery
+  - [Visualization Team](#visualization-team) - Customer data manipulation and front-end components
+  - [Integrations Team](#integrations-team) - External platform automation and connectivity
+  - [Auth Team](#auth-team) - Authentication and authorization for multi-tenant businesses
+  - [AI Solutions Team](#ai-solutions-team) - AI-powered custom app generation and validation
+- [Coordination and Role Relationships](#coordination-and-role-relationships) - How teams collaborate effectively
+
+**Technical Implementation:**
+- [System Architecture Diagrams](#4-system-architecture-diagrams) - Visual mapping of team ownership to platform components
+
+**User-Centered Design:**
+- [Customer Personas](#5-customer-personas) - Six key SMB user roles guiding feature development:
+  - [Owner / General Manager](#persona-owner--general-manager) - High-level business oversight and strategic decisions
+  - [Office Administrator](#persona-office-administrator) - Day-to-day operations and administrative tasks
+  - [Sales Lead (Sales Manager)](#persona-sales-lead-sales-manager) - Revenue generation and team management
+  - [Finance Manager (Bookkeeper/Accountant)](#persona-finance-manager-bookkeeperaccountant) - Financial records and compliance
+  - [Customer Support Representative](#persona-customer-support-representative) - Customer service and issue resolution
+  - [Inventory/Operations Manager](#persona-inventoryoperations-manager) - Supply chain and operational efficiency
+
+**Implementation Strategy:**
+- [Migration Path](#6-migration-path-to-the-new-structure) - Four-phase transition plan from current to target state
+- [Industry Best Practices & References](#7-industry-best-practices--references) - Supporting research and proven methodologies
+
+### Expected Outcomes
+
+This transformation aims to deliver:
+- **Increased Team Autonomy** - Reduced dependencies and faster decision-making
+- **Improved User Experience** - Role-tailored interfaces and workflows for each SMB persona
+- **Enhanced Delivery Speed** - Independent deployments and parallel development streams
+- **Better System Reliability** - Modular architecture with clear ownership boundaries
+
+---
+
 ## 1. Motivations
 
-### Challenges Facing Method's Development Teams
+The need for organizational transformation at Method stems from both immediate operational challenges and long-term strategic imperatives. Our current structure is fundamentally misaligned with our goals of delivering exceptional value to SMB customers while scaling our internal capabilities.
 
-Method's current engineering structure is struggling under several pain points. Teams find themselves **entangled by dependencies**, meaning any change or new feature requires coordination across multiple groups. Research shows that each additional inter-team dependency dramatically increases delays; for example, having just three teams dependent on each other can reduce the chance of on-time delivery to 1 in 8¹. This complex web of dependencies has led to **low team autonomy** – developers can rarely implement or deploy changes without waiting on others. In practice, small changes become risky and cumbersome to ship in a monolithic setup². Additionally, the core **no-code platform underpinning Method's stock apps is fragile**, having grown unwieldy over time. Minor tweaks in one module often have unexpected side effects elsewhere, making teams hesitant to innovate. This fragility, coupled with a tightly coupled codebase, means the platform is difficult to evolve or scale. In summary, the development organization is slowed by coordination bottlenecks and fear of breaking things, preventing Method from delivering improvements at the speed needed.
+### The Cost of Organizational Misalignment
 
-### Strategic Goal – Tailoring Experiences to SMB User Roles
+*Current structure creates a "coordination tax" that severely limits delivery velocity and innovation.*
 
-Amid these internal challenges, Method's 2026 strategic vision is laser-focused on increasing product adoption and engagement. The strategy targets one key lever: **making Method's solution more relevant and valuable to each role** in a small-to-medium business (SMB). Currently, Method's "stock" applications take a one-size-fits-all approach, limiting their appeal to the diverse stakeholders in an SMB. To drive deeper adoption, the product must cater to the unique workflows and pain points of different roles – from an owner's high-level dashboard needs to a sales rep's deal-tracking tools. SMB users often prioritize ease of use and immediate value³, so a generic experience fails to win them over. By tailoring the CRM's interface, automations, and reports to each persona (e.g. Owner, Sales Lead, Finance Manager, etc.), Method aims to significantly boost engagement. In essence, the motivation is to reorient engineering and product development so that teams can deliver **specialized, role-targeted features** rapidly and reliably. This will not only solve internal efficiency issues but also realize the strategic objective of a more personalized, sticky product for all SMB users.
+Method's engineering teams are trapped in a web of dependencies that dramatically reduces effectiveness:
+
+- **87.5% delivery failure rate** when three teams must collaborate on features¹
+- **Innovation paralysis** as teams fear breaking shared platform components
+- **Accountability vacuum** where no single team owns end-to-end outcomes
+- **Technical debt accumulation** from risk-averse, patch-based solutions
+
+### The SMB Market Opportunity
+
+*SMBs need role-specific software experiences but current solutions force them into one-size-fits-all approaches.*
+
+Small businesses represent massive untapped potential with unique requirements:
+
+- **Low adoption rates**: Only 1-2 power users typically engage while 3-15 stakeholders remain underserved
+- **Immediate value expectation**: SMBs abandon software that doesn't provide obvious benefit within days
+- **Customization paradox**: Need tailored workflows but lack resources for complex implementations
+- **Multi-tenant complexity**: Franchises and PE portfolios require sophisticated access control we don't provide
+
+### The AI-Powered Software Revolution
+
+*AI is democratizing software creation, creating both opportunity and existential threat for traditional platforms.*
+
+The software industry is undergoing fundamental disruption:
+
+- **Natural language programming**: Non-technical users can now create sophisticated applications through conversation
+- **Quality trust gap**: AI generates code quickly but businesses need confidence in reliability and maintainability
+- **Platform advantage**: Our no-code infrastructure uniquely positions us to combine AI generation with governance
+- **Competitive moat opportunity**: Robust QA and validation can differentiate us from pure AI code generators
+
+### Strategic Vision: Method as the SMB Operating System
+
+*Transform from CRM platform to the central nervous system for all SMB operations by 2026.*
+
+Our ambitious but achievable vision encompasses four pillars:
+
+- **Role-Aware Intelligence**: Every stakeholder sees exactly what they need, when they need it
+- **Seamless Integration**: All external SMB tools connect automatically, eliminating data silos
+- **AI-Powered Adaptability**: Custom solutions generated through conversation, validated through rigorous testing
+- **Multi-Tenant Sophistication**: Enterprise-grade access control for franchises and PE portfolios
+
+### The Transformation Imperative
+
+*The cost of maintaining the status quo far exceeds the effort required for organizational change.*
+
+Aligning teams around customer outcomes rather than technical domains will deliver four critical advantages:
+
+1. **Accelerated Innovation**: Customer-problem-focused teams outperform technical-layer-organized teams
+2. **Scaled Quality**: Clear ownership eliminates the diffusion of responsibility that creates platform fragility
+3. **Market Leadership**: Solving real SMB problems positions Method as the default choice for growing businesses
+4. **Future-Proofing**: This structure leverages emerging technologies while maintaining platform strengths
+
+**The question isn't whether we should reorganize, but whether we can afford not to.**
 
 ## 2. Problem Statements
 
-### Internal Friction Points
+Method faces critical challenges that prevent us from delivering value effectively to both our internal teams and SMB customers. These issues fall into two main categories:
 
-The current team structure and codebase have created several **bottlenecks in engineering flow**. First, **coordination overhead is high** – teams are organized by technical layers or broad domains rather than end-to-end features, meaning multiple teams must touch a single feature. For example, adding a new report might involve a "database" team, a "UI" team, and a "business logic" team, all of whom must carefully synchronize their work. This leads to slow progress and frequent miscommunications. It also results in a **lack of clear ownership**; when "everyone" owns a part of the feature, no single team feels fully accountable for the outcome. Second, the **difficulty of shipping updates** is notable. Because the no-code platform is tightly coupled, even a minor update to one app screen or action can require a full platform regression test. Teams often queue changes into infrequent big releases, since independent deployments are hard – a classic symptom of a monolithic release structure⁴. The consequence is fewer, larger releases that carry more risk. Third, **low autonomy** drains team morale and effectiveness. Teams cannot make decisions unilaterally; any significant change requires approval or code changes from other teams. This not only slows delivery but also stifles innovation – developers are less likely to experiment or propose bold improvements if the process to implement them is onerous. In summary, the internal problem is one of **structure misalignment**: the way teams are organized (and how the code is structured) doesn't allow for independent, fast flow of work. As Conway's Law predicts, a product's design reflects the org's communication structure⁵⁶ – currently, that structure is convoluted, so the software has become convoluted as well. Addressing these internal frictions is a prerequisite to any sustainable product advancement.
+### Internal Team Friction
 
-### User-Facing Problems
+Our current organizational and technical structure creates significant barriers to efficient product development:
 
-The limitations of Method's current approach are also evident in the user experience, especially across different SMB roles. The "**stock applications lack relevance for specific stakeholders**", creating a gap between what users need and what the product offers. For instance, an Owner or General Manager logging in wants a quick snapshot of the business (sales trends, cash flow, staff performance) but instead might see generic CRM screens not tailored to their high-level overview needs. A Sales Lead, on the other hand, cares about pipelines, lead follow-ups, and team performance metrics – yet the out-of-the-box design may not highlight these effectively, forcing them to manually pull data or use workarounds. The Office Administrator or Operations Manager might need streamlined workflows for order fulfillment or inventory checks that the current stock apps don't cleanly provide. This **one-size-fits-all design leads to low engagement**: users find the CRM clunky or not directly helpful for their day-to-day tasks, and some may abandon features altogether. In customer feedback, we've heard that different roles "see a lot of noise" – fields or modules irrelevant to them – while missing key functions they really want. This misalignment translates to poor adoption beyond the primary user who set up Method.
+#### [Dependency Entanglement Between Teams](#dependency-entanglement-between-teams)
 
-Ultimately, **limited persona relevance is hampering Method's growth**. SMBs have very limited time and seek tools that immediately fit their workflow⁷. If Method's platform requires significant tweaking or doesn't speak each role's language, busy users either disengage or seek alternate solutions. Thus, the external problem statement is clear: Method must evolve from a generic CRM to a **role-aware business platform**, where each type of SMB user finds direct, tailored value. Solving this not only improves customer satisfaction but also aligns with the strategic goal of deeper product adoption across an organization (not just one champion user).
+- Most stock apps depend heavily on a shared no-code platform (including runtime, schema, action sets, screen designer)
+- This leads to coordination bottlenecks—teams can't confidently ship features without affecting or waiting on others
+- Research shows that each additional inter-team dependency dramatically increases delays; having just three teams dependent on each other can reduce the chance of on-time delivery to 1 in 8¹
+
+#### [Low Autonomy for App Teams](#low-autonomy-for-app-teams)
+
+- App teams can't move independently because they're blocked by changes or limitations in platform infrastructure
+- This reduces velocity and limits innovation at the edge of the platform
+- Teams cannot make decisions unilaterally; any significant change requires approval or coordination with other teams
+- This not only slows delivery but also stifles innovation – developers are less likely to experiment or propose bold improvements
+
+#### [Update Fragility](#update-fragility)
+
+- Customizations made by customer-facing teams create tension with automated app update processes
+- Rollouts are fragile and can unintentionally break user-configured experiences
+- Because the no-code platform is tightly coupled, even minor updates can require full platform regression testing
+- Teams often queue changes into infrequent big releases, resulting in fewer, larger releases that carry more risk
+
+#### [Lack of Clear Ownership Across Platform Components](#lack-of-clear-ownership-across-platform-components)
+
+- It's unclear who owns what—teams overlap in responsibility for runtime behaviors, visual components, and automation logic
+- This causes confusion, duplicated work, and missed opportunities for platform-wide improvements
+- When "everyone" owns a part of a feature, no single team feels fully accountable for the outcome
+
+As Conway's Law predicts, a product's design reflects the organization's communication structure⁵⁶ – currently, that structure is convoluted, so the software has become convoluted as well.
+
+### Product Gaps for SMB Customers
+
+Our current approach creates significant barriers to customer success and growth:
+
+#### [Stock Apps Don't Engage Individual Users Within Customer Organizations](#stock-apps-dont-engage-individual-users-within-customer-organizations)
+
+- **Underlying Problem**: The current stock apps are generalized and not tailored to the responsibilities of distinct roles (e.g. Office Manager, Sales Lead, Finance Coordinator)
+- **Impact**: Only one or two "power users" tend to adopt the product fully, while other users disengage or rely on external tools
+- **Result**: Lower stickiness, lower expansion, and fewer advocates within each customer organization
+
+For instance, an Owner or General Manager wants a quick snapshot of the business (sales trends, cash flow, staff performance) but instead sees generic CRM screens not tailored to their high-level overview needs. A Sales Lead cares about pipelines, lead follow-ups, and team performance metrics – yet the out-of-the-box design may not highlight these effectively, forcing them to manually pull data or use workarounds.
+
+#### [Customer-Specific Customizations Are Difficult to Support Across Updates](#customer-specific-customizations-are-difficult-to-support-across-updates)
+
+- **Underlying Problem**: SMBs frequently need workflows that diverge from stock templates, and these are delivered via Professional Services or customer self-configuration
+- **Impact**: These customizations aren't always visible to product/platform teams, and often lack automated test coverage or safe update mechanisms
+- **Result**: Updates risk breaking functionality, slowing down release cadence and damaging customer trust
+
+This creates a vicious cycle where the fear of breaking customizations further slows our ability to innovate and improve the platform.
+
+#### [Lack of Insight Into Real-World Usage and Friction Points](#lack-of-insight-into-real-world-usage-and-friction-points)
+
+- **Underlying Problem**: The platform doesn't systematically capture feedback, feature usage, or pain points across personas or customer segments
+- **Impact**: Teams miss opportunities to learn from real behavior, limiting their ability to improve workflows or prioritize the right enhancements
+- **Result**: Product evolution is driven more by anecdote or high-touch feedback than representative data
+
+Ultimately, **limited persona relevance is hampering Method's growth**. SMBs have very limited time and seek tools that immediately fit their workflow⁷. If Method's platform requires significant tweaking or doesn't speak each role's language, busy users either disengage or seek alternate solutions. Method must evolve from a generic CRM to a **role-aware business platform**, where each type of SMB user finds direct, tailored value.
 
 ## 3. Proposed Responsibility-Based Team Structure
 
 ### Overview of the Team Model
 
-We propose reorganizing approximately 50 developers into **cross-functional teams oriented around key customer-facing responsibilities**, rather than around technical layers or broad product domains. Each team – roughly 5 to 8 people ("two-pizza team" size) – will own an **end-to-end slice of functionality** that delivers on a specific user need or product capability. In practice, this means a team has all the skills needed (frontend, backend, QA, and ideally a product manager and designer) to **build, test, and deploy features** in their responsibility area with minimal hand-offs. Crucially, each team's mission is defined in terms of **customer value** ("Data Ingestion", "Insights", "Automation", etc.) to ensure alignment with Method's strategic goals. This aligns with modern agile org design, where "Squads are cross-functional, autonomous teams (typically 6–12 individuals) that focus on one feature area, each with a unique mission"⁸. By giving each team a clear mission and ownership of specific platform components, we increase autonomy and reduce inter-team dependencies. The guiding principle is that teams act as **mini start-ups** within their domain: they have the freedom to decide how to achieve their objectives (tools, approach) while being accountable for results. This approach draws inspiration from the Spotify model's emphasis on autonomy, communication, and quality⁹. It also echoes the concept of **stream-aligned teams** from Team Topologies, where teams are aligned to a flow of work (in our case, each "flow" is a major responsibility that delivers user value)¹⁰¹¹. Below, we outline the specific teams, each with its name, mission, scope of ownership, and example responsibilities. We also describe how these teams will coordinate through defined interfaces and rituals to function as a cohesive engineering organization.
+We propose reorganizing our development organization into **8 cross-functional teams oriented around key strategic capabilities**, rather than around technical layers or broad product domains. Each team – roughly 6 to 8 people ("two-pizza team" size) – will own an **end-to-end slice of functionality** that delivers on specific business objectives. In practice, this means a team has all the skills needed (frontend, backend, QA, and ideally a product manager and designer) to **build, test, and deploy features** in their responsibility area with minimal hand-offs.
+
+This structure addresses both **customer-facing capabilities** (insights, visualization, integrations) and **internal enablement** (internal tools, auth, AI solutions) while maintaining platform reliability (automation, user experience). Each team's mission is defined in terms of **strategic value delivery** to ensure alignment with Method's goals of serving SMB users more effectively while scaling our internal capabilities.
+
+The guiding principle is that teams act as **mini start-ups** within their domain: they have the freedom to decide how to achieve their objectives (tools, approach) while being accountable for results. This approach draws inspiration from the Spotify model's emphasis on autonomy, communication, and quality⁹, while incorporating modern concepts of **stream-aligned teams** from Team Topologies¹⁰¹¹. Below, we outline the specific teams, each with its name, mission, scope of ownership, and example responsibilities.
 
 ## Teams and Responsibilities
 
-### Data Ingestion Team
+### Insights Team
 
-**Mission:** Seamlessly ingest and synchronize data from external systems into Method's platform, providing a clean, up-to-date foundation for all apps. This team's work ensures that Method always has the right data at the right time for users.
+**Mission:** Gather and synthesize data into actionable insights for both Method as a company and our customers. This team transforms raw information from diverse sources into intelligence that drives strategic decisions and enhances product value.
 
-**Scope & Ownership:** The Data Ingestion Team owns the integration pipelines and data import services. This includes connectors to external systems (e.g. QuickBooks, Xero, email marketing tools) and the processes that map external data into Method's internal schema. In terms of platform components, this team is responsible for the External Integrations service (as shown in the architecture diagram) and contributes to the schema design for imported data. They ensure that any data coming in or going out of Method's no-code platform does so reliably and securely.
-
-**Key Responsibilities:**
-• Building and maintaining connectors/APIs for third-party systems (e.g., the QuickBooks sync engine) including handling authentication, rate limits, and data transformations.
-• Managing the data import/export workflows, such as CSV upload tools or scheduled sync jobs, so that an Office Admin can easily bring in legacy data.
-• Ensuring data integrity and conflict resolution – for example, if a customer record is updated in QuickBooks and Method simultaneously, the team defines how to merge changes or alert users (addressing a current pain point of inconsistent data).
-• Working closely with the Platform Core team on schema evolution: if a new data source requires new fields or tables in Method's data model, the Data Ingestion team proposes these changes. They essentially act as stewards of external data within the platform.
-• Monitoring and optimizing integration performance and reliability (e.g., making sure nightly sync jobs complete on time). If an integration fails, this team's on-call handles it.
-
-By having a dedicated team for data ingestion, Method can on-board new data sources faster (a big win for customers needing custom integrations). This team reduces the burden on others by handling the complexities of external APIs. They ultimately enable personas like the Finance Manager (who relies on QuickBooks data) or the Inventory Manager (needing supplier or e-commerce data) to trust that Method is always up-to-date with the latest information.
-
-### Insight Generation Team
-
-**Mission:** Deliver actionable business insights and analytics to Method users, turning raw data into valuable information for decision-making. This team exists to ensure that each persona – from Owners to Sales Leads – can easily glean the trends and KPIs that matter to them, driving engagement through data-driven features.
-
-**Scope & Ownership:** The Insight Generation Team owns Method's reporting and analytics features. This includes any dashboards, reports, data visualization components, and possibly AI-driven insights (if on the roadmap). In the platform architecture, while there isn't a single "analytics engine" module, this team heavily leverages the Schema Service (Data Model) for querying data and may own custom endpoints or modules for aggregations. They might also oversee a Reporting module (as overlaid in the architecture diagram) that defines how data is fetched and calculated for insights. They ensure that the pipeline from data to insight (data retrieval, calculations, display) is optimized and user-friendly.
+**Scope & Ownership:** The Insights Team owns the end-to-end data intelligence pipeline, from collection through analysis to presentation. This includes processing PS team transcripts, customer databases, emails, support tickets, user behavior analytics, and external market data. They develop both internal business intelligence capabilities and customer-facing analytics features.
 
 **Key Responsibilities:**
-• Developing dashboard and report screens tailored to various personas: e.g., an Executive Dashboard for Owners/GMs showing sales, expenses, and customer satisfaction in one view; a Sales Leaderboard for Sales Leads; Aging Reports for Finance Managers, etc.
-• Creating a library of pre-defined metrics and KPIs within Method (e.g., lead conversion rate, monthly revenue, average response time) so that users don't have to build these from scratch.
-• Implementing custom report builders or query tools in the no-code interface, enabling power users (maybe an Office Admin or Analyst role) to drag-and-drop to create their own reports safely.
-• Ensuring that heavy analytics queries are efficient – possibly by working with Platform Core to index the database or by introducing caching or a small data warehouse if needed for performance.
-• (Future scope) Infusing AI or predictive analytics: e.g., suggestions like "Customers with overdue invoices" or "Forecast next month's sales based on pipeline," if Method chooses to add such capabilities. The team would prototype and own those features.
-
-With this team, relevance for each role is greatly enhanced – for example, an Owner logs in and sees key business health metrics without manual effort. The Insight team's work addresses the pain point of limited visibility (something many SMBs struggle with). By owning the end-to-end chain from data to visualization, they ensure new insights can be shipped without waiting on separate data or UI teams. In essence, they empower users to make data-driven decisions quickly, boosting Method's value proposition.
+• **Internal Intelligence:** Mining PS team transcripts and customer communications to identify product gaps, feature requests, and market trends that inform strategic planning
+• **Customer Analytics:** Building dashboards and reports tailored to SMB personas (Owner dashboards, Sales performance metrics, Financial reporting, etc.)
+• **Predictive Intelligence:** Developing models to forecast customer churn, identify upsell opportunities, and predict feature adoption
+• **Data Pipeline Management:** Ensuring clean, reliable data flows from all internal and customer sources into our analytics infrastructure
+• **Cross-functional Intelligence:** Providing data-driven insights to other teams about user behavior, feature usage patterns, and market opportunities
 
 ### Action Automation Team
 
-**Mission:** Provide powerful yet user-friendly automation of business processes and workflows within Method. This team's goal is to let users "work smarter, not harder" by automating repetitive tasks and triggering the right actions at the right times, increasing efficiency and engagement.
+**Mission:** Deliver workflow automation and ensure execution reliability of our no-code platform. This team focuses on making automation powerful, reliable, and accessible to SMB users while maintaining platform stability.
 
-**Scope & Ownership:** The Action Automation Team owns the Action Engine (or workflow engine) in the no-code platform. This is the component responsible for executing "action sets" – the custom logic that runs when certain events occur or on schedules. They also likely own the library of available actions (e.g., send email, create invoice, update field) and the UI for configuring these automations (which might be part of the screen designer or a separate automation designer interface). Essentially, anything that has to do with automating or scripting behavior in the platform falls under this team.
-
-**Key Responsibilities:**
-• Developing and maintaining the no-code Action/Workflow Designer: the interface where a user (perhaps a Method consultant or an admin) can specify triggers (e.g., "when a new lead is added…") and actions ("…send a welcome email and assign follow-up task"). This designer must be intuitive yet powerful.
-• Expanding the catalog of actions and integrations: e.g., actions to send SMS, to call an external API, to update a QuickBooks record via the integration – many of these actions interface with external services or other parts of the platform. The team ensures new actions are added based on user needs (like "text the Sales Lead when a big deal closes").
-• Optimizing the runtime execution of workflows: ensuring that actions execute reliably, with proper error handling and possibly rollback/compensation if something fails. Given the fragility previously, this team will harden the workflow engine so it's robust (transactions, retries, etc.).
-• Implementing scheduled automations (cron-like behavior) and ensuring they run on time. For instance, an Inventory Manager might schedule a daily stock level report email – the engine should handle that reliably.
-• Working with the Data team on any actions that involve external systems (ensuring, say, an "Add Customer to QuickBooks" action uses the Data Ingestion team's connector appropriately). They define clear team APIs here – e.g., the Automation team might call a documented interface provided by Data Ingestion for external updates¹²¹³.
-• Ensuring security and permissions within automations: making sure one user's automation can't access data they shouldn't, etc., possibly in collaboration with Platform Core on role-based access controls.
-
-In the new structure, this team directly contributes to user engagement: SMB users often lack IT support, so automations can save them significant time (e.g., automatically following up with a sales lead or sending invoice reminders). By making automation easier and safer to use, Method becomes more "sticky" – users rely on it for daily tasks. This team's focus on "Action Automation" ensures that Method's platform can adapt to varied business processes without heavy coding, which is central to the no-code value proposition. It also increases team autonomy internally: they can improve the workflow engine without stepping on the toes of, say, the UI team, as long as they adhere to the platform's interfaces.
-
-### User Experience (UX) Team
-
-**Mission:** Enable a tailored and delightful user interface for each SMB role, by owning the front-end experience and the no-code UI customization tools. This team strives to give Method users an interface that feels built-for-them, improving usability and adoption across personas.
-
-**Scope & Ownership:** The UX Team (also potentially called "App Experience Team") is responsible for the Screen Designer and UI runtime aspects of the platform. They own the screen-building tool that Method offers (allowing drag-and-drop creation or editing of app screens), the library of UI components/controls, and the client-side logic that renders and processes those screens at runtime. They also guard the overall UX consistency – ensuring that the apps (stock or custom) follow modern design principles and that persona-specific UIs are coherent. If Method has mobile app wrappers or specific navigation frameworks, those likely fall here too.
+**Scope & Ownership:** The Action Automation Team owns the entire automation engine, from workflow design tools to execution infrastructure. They ensure automations run reliably at scale and provide users with intuitive tools to automate their business processes without coding knowledge.
 
 **Key Responsibilities:**
-• Maintaining and enhancing the Screen Designer – making it easier to create screens that are responsive, accessible, and role-specific. For example, they might add templates or wizards: when creating a screen, pick "Sales Lead layout" vs "Support Rep layout" to guide users in tailoring to that persona.
-• Developing new UI components and widgets that teams like Insights or Automation can leverage. For instance, if the Insights Team needs a new chart type for dashboards, the UX team provides a polished component for that. Or if the Automation Team needs a special form UI to configure a complex action, UX team helps build it.
-• Improving the performance and stability of the front-end – optimizing load times for screens, ensuring cross-browser and cross-device compatibility. A fragile UI builder can frustrate customers, so this team will invest in quality here.
-• Implementing personalization capabilities: e.g., the ability to show/hide certain fields or whole screens based on a user's role (so an Owner sees some sections that a Support Rep doesn't, and vice versa). This directly supports the 2026 goal of role-tailored experiences. The UX team would work on features like role-based layouts or configurable dashboards per role.
-• Overseeing UI/UX consistency and guidelines – acting as a Chapter (in Spotify terms) for design. They might run a Design Guild that spans all teams to ensure a cohesive look and feel, even as different teams add features.
-• User testing and feedback for UI changes: getting input from real end-users in each persona to validate that new screens or components indeed improve their experience.
+• **Workflow Engine Reliability:** Hardening the automation execution engine with proper error handling, retries, rollback mechanisms, and monitoring
+• **No-Code Workflow Designer:** Building intuitive interfaces for users to create complex business automations without technical expertise
+• **Action Library Expansion:** Developing and maintaining a comprehensive library of pre-built actions (email, SMS, integrations, data operations, etc.)
+• **Performance Optimization:** Ensuring automations execute efficiently even at high volume and complex workflows don't degrade platform performance
+• **Quality Assurance:** Building testing frameworks to validate automation logic before deployment and monitor execution reliability
 
-By having a team dedicated to UX and the no-code UI platform, Method ensures that visual and interaction design are first-class citizens. This team not only empowers external customers (through better customization tools and default designs), but also accelerates internal development – other teams can rely on the UX team's components and guidance rather than reinvent UI elements. Ultimately, this results in a more intuitive product: e.g., the Office Admin finds it easy to tweak a form for their needs, the Sales Rep gets a mobile-friendly view for quick updates on the go, and all with consistent branding and quality. A focus on UX is critical because even powerful features (data, automation) can fall flat if not presented well to users.
+### User Experience Team
 
-### Platform Core Team
+**Mission:** Optimize in-platform navigation and customer education to ensure users can effectively utilize Method's capabilities. This team focuses on user onboarding, discoverability, and guided experiences.
 
-**Mission:** Underpin the entire Method ecosystem with a reliable, scalable, and secure platform foundation. This team's charter is to reduce fragility and provide common services so that feature teams (like those above) can build quickly on a solid base. In other words, Platform Core is the guardian of system quality and the enabler of fast flow.
-
-**Scope & Ownership:** The Platform Core Team owns the core backend services that are shared across the product. This includes the Runtime Engine (that executes no-code logic and serves screens), the Schema Service (which manages the metadata and database for Method's no-code data model), and cross-cutting concerns like authentication, authorization, and deployment pipelines. They might also own developer tooling for the engineering team (CI/CD, monitoring), though if needed that could be a separate "DevOps Team" or integrated here given team size. Essentially, Platform Core ensures the "engine room" of the no-code platform runs smoothly. They do not focus on specific features for end-users, but on enabling all other teams to deliver features safely.
+**Scope & Ownership:** The User Experience Team owns the overall user journey within Method, including navigation patterns, onboarding flows, help systems, and educational content. They ensure users can discover and effectively use platform features.
 
 **Key Responsibilities:**
-• Hardening the no-code runtime: improving how the platform interprets and executes the configurations (screens, actions, etc.). They may tackle technical debt in this engine, optimize its performance (so screens load faster, workflows execute with less latency), and ensure it scales (support more users, larger data volumes without breaking).
-• Maintaining the data schema and storage layer: this includes migrations when new fields or tables are added, ensuring referential integrity, backups, and performance tuning of the database. If currently the platform has a single multi-tenant database that's fragile, this team will gradually refactor or partition it to reduce coupling (e.g., separate schema per app or per tenant if needed to improve safety).
-• Access control and security: implementing robust role-based access throughout the platform (both at the data level and feature level). For example, if we introduce persona-specific screens, Platform Core ensures that an "Inventory Manager" role cannot access financial screens meant for Finance Manager, etc., by providing the underlying permission framework. This mitigates the risk of data leaks during the transition to role-tailored features.
-• Managing platform releases and DevOps: this team would coordinate deployments, set up automated testing frameworks, and monitor system health. They may define team-wide standards for quality (like coding guidelines, test coverage expectations), acting somewhat like an enabling team for the others in terms of engineering practices.
-• Providing internal APIs/SDKs: Where needed, they expose clear interfaces for other teams – for example, a consistent API to query the schema or to log events. Adopting a "team API" approach¹⁴, Platform Core can document how other teams interact with platform services (e.g., "to add a new field type, follow these steps…" or "use this internal library to query the database safely"). This reduces ad-hoc coupling and ensures changes in the core are communicated and managed systematically.
+• **Navigation & Information Architecture:** Designing intuitive navigation patterns that help users efficiently move between features and find what they need
+• **Onboarding & Education:** Creating guided tours, tutorials, and contextual help that educate users on platform capabilities
+• **User Research & Testing:** Conducting user research to identify pain points and validate design decisions across different SMB personas
+• **Accessibility & Usability:** Ensuring the platform is accessible and usable across different devices, abilities, and technical skill levels
+• **Feature Discoverability:** Helping users discover and adopt new features through thoughtful UI/UX design and progressive disclosure
 
-The Platform Core Team is essentially Method's internal platform engineering function. By running it "like a product team" with other developers as their customers¹⁵, they will focus on providing a smooth developer experience and a stable platform. A strong Platform team frees up product teams (Data, Insights, Automation, UX) to focus on customer-facing innovation without reinventing wheels or worrying about infrastructure. Over time, this team can also drive architectural improvements – for instance, breaking apart parts of the monolith along clear module boundaries (aligned with the new teams, per Conway's Law). The existence of this team addresses the current fragility: they will prioritize refactoring and robustness, so the no-code engine and schema can evolve without constant fear of breaking stock apps. In short, Platform Core is the backbone that will support faster, safer delivery of value by all other teams.
+### Internal Tools Team
+
+**Mission:** Reduce internal bottlenecks that prevent us from delivering quickly by building tools and processes that accelerate development, support, and operations.
+
+**Scope & Ownership:** The Internal Tools Team owns development tools, internal dashboards, support tools, and operational efficiency systems that enable other teams to work more effectively.
+
+**Key Responsibilities:**
+• **Developer Experience Tools:** Building CI/CD improvements, testing frameworks, deployment tools, and development environment optimizations
+• **Support Tools:** Creating customer support dashboards, debugging tools, and automated issue resolution systems
+• **Operational Dashboards:** Developing real-time monitoring, alerting, and business intelligence tools for internal operations
+• **Process Automation:** Automating manual internal processes like customer onboarding, billing operations, and support ticket routing
+• **Knowledge Management:** Building internal wikis, documentation systems, and knowledge sharing tools
+
+### Visualization Team
+
+**Mission:** Provide customers with the ability to intuitively manipulate and understand their own data through sophisticated front-end components and visualization tools.
+
+**Scope & Ownership:** The Visualization Team owns all customer-facing data visualization components, chart libraries, interactive dashboards, and data exploration tools that help SMB users understand their business data.
+
+**Key Responsibilities:**
+• **Interactive Chart Library:** Building and maintaining a comprehensive library of interactive charts, graphs, and data visualizations
+• **Dashboard Builder:** Creating drag-and-drop dashboard building tools that allow customers to create custom views of their data
+• **Data Exploration Tools:** Developing intuitive interfaces for customers to filter, sort, and drill down into their business data
+• **Mobile-Optimized Visualizations:** Ensuring data visualizations work effectively on mobile devices for on-the-go business monitoring
+• **Performance Optimization:** Optimizing visualization rendering for large datasets and ensuring smooth interactions
+
+### Integrations Team
+
+**Mission:** Drive automation of external platforms that our customers use by building seamless, reliable connections between Method and third-party systems.
+
+**Scope & Ownership:** The Integrations Team owns all external platform connections, API integrations, data synchronization, and third-party automation capabilities.
+
+**Key Responsibilities:**
+• **Platform Connectors:** Building and maintaining integrations with QuickBooks, Xero, email marketing tools, e-commerce platforms, and other business software
+• **API Management:** Developing robust API authentication, rate limiting, error handling, and data transformation capabilities
+• **Real-time Synchronization:** Ensuring data stays synchronized between Method and external systems with minimal latency
+• **Integration Marketplace:** Building a marketplace or library of pre-built integrations that customers can easily enable
+• **Custom Integration Tools:** Providing tools for power users or consultants to build custom integrations without deep technical knowledge
+
+### Auth Team
+
+**Mission:** Handle authentication and authorization within our platform, specifically supporting multi-tenant businesses like franchises and private equity portfolios.
+
+**Scope & Ownership:** The Auth Team owns user identity management, permission systems, multi-tenant architecture, and access control across the entire platform.
+
+**Key Responsibilities:**
+• **Multi-Tenant Architecture:** Building robust tenant isolation and management systems for franchise and portfolio business models
+• **Role-Based Access Control:** Developing granular permission systems that support complex organizational hierarchies
+• **Single Sign-On (SSO):** Implementing enterprise SSO capabilities for larger customers with existing identity systems
+• **Audit & Compliance:** Building audit trails and compliance reporting for businesses with regulatory requirements
+• **Security Infrastructure:** Implementing security best practices, threat detection, and incident response capabilities
+
+### AI Solutions Team
+
+**Mission:** Leverage AI to provide customers with custom applications without requiring software or no-code knowledge, using chat interfaces and robust QA workflows to deliver validated solutions.
+
+**Scope & Ownership:** The AI Solutions Team owns AI-powered app generation, natural language interfaces for software creation, and quality assurance frameworks for AI-generated solutions.
+
+**Key Responsibilities:**
+• **Conversational App Builder:** Developing AI agents that can understand customer requirements through natural language and generate appropriate no-code solutions
+• **Requirements Translation:** Building systems that translate business requirements into technical specifications and app configurations
+• **AI-Powered QA Framework:** Creating comprehensive testing and validation systems that ensure AI-generated apps meet quality standards and business requirements
+• **Solution Templates:** Developing a library of proven app patterns and business logic that the AI can leverage to build reliable solutions
+• **Confidence & Validation Systems:** Building mechanisms to assess the quality and appropriateness of AI-generated solutions before deployment
+• **Human-AI Collaboration Tools:** Creating interfaces where Method consultants and customers can collaborate with AI to refine and perfect generated solutions
+
+**Strategic Vision for AI Solutions:** This team positions Method at the forefront of the AI-powered software generation revolution. By combining AI's ability to understand and generate solutions with robust QA workflows, Method can offer the confidence and reliability that businesses need when adopting AI-generated software. The focus on validation and human oversight differentiates Method from pure AI code generation tools by ensuring business-grade quality and reliability.
 
 ## Coordination and Role Relationships
 
